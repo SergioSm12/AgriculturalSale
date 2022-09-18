@@ -6,8 +6,11 @@ namespace AgriculturalSale.Models
     {
         [Key]
         public int Id { get; set; } 
-        public String Name { get; set; }
+        public string Name { get; set; }
         
-        public String Features { get; set; }
+        public string Features { get; set; }
+        public string ImageUrl { get; set; }    
+        //RelationShips
+        public List<Product> Products { get; set; }
     }
 }

@@ -6,9 +6,12 @@ namespace AgriculturalSale.Models
     {
         [Key]
         public int Id { get; set; }
-        public String Municipality { get; set; }
-        public String SideWalk {get; set; }
-        public String Details { get; set; }
+        public string  Municipality { get; set; }
+        public string SideWalk {get; set; }
+        public string Details { get; set; }
+
+        //RelationShips
+        public List<Product> Products { get; set; }
 
     }
 }
