@@ -1,8 +1,0 @@
-C:\Cursos\AgriculturalSale\PracticaPOO\PracticaPOO\bin\Debug\PracticaPOO.exe.config
-C:\Cursos\AgriculturalSale\PracticaPOO\PracticaPOO\bin\Debug\PracticaPOO.exe
-C:\Cursos\AgriculturalSale\PracticaPOO\PracticaPOO\bin\Debug\PracticaPOO.pdb
-C:\Cursos\AgriculturalSale\PracticaPOO\PracticaPOO\obj\Debug\PracticaPOO.csproj.AssemblyReference.cache
-C:\Cursos\AgriculturalSale\PracticaPOO\PracticaPOO\obj\Debug\PracticaPOO.csproj.SuggestedBindingRedirects.cache
-C:\Cursos\AgriculturalSale\PracticaPOO\PracticaPOO\obj\Debug\PracticaPOO.csproj.CoreCompileInputs.cache
-C:\Cursos\AgriculturalSale\PracticaPOO\PracticaPOO\obj\Debug\PracticaPOO.exe
-C:\Cursos\AgriculturalSale\PracticaPOO\PracticaPOO\obj\Debug\PracticaPOO.pdb
