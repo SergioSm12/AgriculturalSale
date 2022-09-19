@@ -173,6 +173,7 @@ namespace AgriculturalSale.Data
                             ProducTypeId=7,
                             LocationId=3,
                         },
+                        //2
                         new Product()
                         {
                             Name="Papa unica",
@@ -182,6 +183,7 @@ namespace AgriculturalSale.Data
                             ProducTypeId=4,
                             LocationId=3,
                         },
+                        //3
                         new Product()
                         {
                             Name="Cebolla Takis",
@@ -191,6 +193,7 @@ namespace AgriculturalSale.Data
                             ProducTypeId=11,
                             LocationId=5,
                         },
+                        //4
                         new Product()
                         {
                             Name="Cebolla Sirius",
@@ -200,6 +203,7 @@ namespace AgriculturalSale.Data
                             ProducTypeId=12,
                             LocationId=2,
                         },
+                        //5
                         new Product()
                         {
                             Name="Zanahoria Bejo",
@@ -208,6 +212,51 @@ namespace AgriculturalSale.Data
                             Price=90000,
                             ProducTypeId=10,
                             LocationId=1,
+                        },
+                    });
+                    context.SaveChanges();
+
+                }
+                if (!context.Sale.Any())
+                {
+                    context.Sale.AddRange(new List<Sale>()
+                    {
+                        //1
+                        new Sale()
+                        {
+                            Date= DateTime.Now,
+                            PhoneNumber= "31296587421",
+                            MethodOfPaymentId=1
+                        },
+                        //2
+                        new Sale()
+                        {
+                            Date=DateTime.Now,
+                            PhoneNumber="3205987412",
+                            MethodOfPaymentId=1
+                        },
+                    });
+                    context.SaveChanges();
+                }
+                if (!context.SaleDetail.Any())
+                {
+                    context.SaleDetail.AddRange(new List<SaleDetail>()
+                    {
+                        //1
+                        new SaleDetail()
+                        {
+                            ProductId=1,
+                            SaleId=1,
+                            Price=120000,
+                            Amount=1
+                        },
+                        //2
+                        new SaleDetail()
+                        {
+                            ProductId=4,
+                            SaleId=2,
+                            Price=100000,
+                            Amount=1
                         },
                     });
                     context.SaveChanges();
