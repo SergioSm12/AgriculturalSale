@@ -22,8 +22,8 @@ namespace AgriculturalSale.Data
 
             //traer foranea de product
             builder.Entity<SaleDetail>()
-                .HasOne(p=>p.Product)
-                .WithMany(sp=> sp.saleDetails)
+                .HasOne(p => p.Product)
+                .WithMany(sp => sp.saleDetails)
                 .HasForeignKey(p => p.ProductId);
             //traer foranea de sale
             builder.Entity<SaleDetail>()
@@ -34,12 +34,13 @@ namespace AgriculturalSale.Data
             base.OnModelCreating(builder);
 
         }
-        public DbSet <ProductType> ProductType { get; set; }
-        public DbSet <Location> Location { get; set; }
-        public DbSet <Product> Product { get; set; }
-        public DbSet <Sale> Sale { get; set; }
+        public DbSet<ProductType> ProductType { get; set; }
+        public DbSet<Location> Location { get; set; }
+        public DbSet<Municipality> Municipality { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Sale> Sale { get; set; }
         public DbSet<SaleDetail> SaleDetail { get; set; }
-        public DbSet <MethodOfPayment> MethodOfPayment { get; set; }
+        public DbSet<MethodOfPayment> MethodOfPayment { get; set; }
 
     }
 }

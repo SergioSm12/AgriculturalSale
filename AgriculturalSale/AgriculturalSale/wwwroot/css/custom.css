@@ -1,0 +1,12 @@
+﻿.cardh {
+    background: #15D65F;
+}
+
+body, .cardb {
+    background: #F0F9E1;
+}
+.foto {
+    width: 125px;
+    height: 125px;
+    margin: 2rem 0;
+}

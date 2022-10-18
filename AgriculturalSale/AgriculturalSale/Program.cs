@@ -1,4 +1,5 @@
 using AgriculturalSale.Data;
+using AgriculturalSale.Data.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.23-mysql")
     );
 });
+
+//service confihuration
+builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

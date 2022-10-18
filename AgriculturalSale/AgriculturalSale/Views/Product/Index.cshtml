@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "List of Products";
+}
+
+<div class="row" style="margin-bottom: 5rem;">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3 box-shadow mt-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-dark cardh">
+                            <p class="card-text">
+                                <h5 class="card-title small">
+                                    @product.Name
+                                    <a class="text-dark float-end mx-sm-1 my-sm-0">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                    <a class="text-dark float-end mx-sm-1 my-sm-0">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                    <a class="text-dark float-end mx-sm-1 my-sm-0">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <img class="card-img-top" style="height:250px; width:150px; min-height:auto; max-width:auto;" src="@product.ImageUrl" alt="@product.Name">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body cardb">
+                            <p class="card-text small">
+                                @if (product.Details.Length <= 55)
+                                {
+                                    @product.Details
+                                }
+                                else
+                                {
+                                    @product.Details.Substring(0,55)
+                                    ;
+                                }...
+                            </p>
+                            <p class="card-text small">
+                                <b>Product Type: </b>@product.ProductType.Name <br>
+                                
+                                <b>Status:</b>
+                                @if (product.stock == "si" || product.stock == "SI" || product.stock == "Si" || product.stock == "sI")
+                                {
+                                    <span class="badge bg-success text-dark">AVAILABLE</span>
+                                }
+                                else if (product.stock == "no" || product.stock == "NO" || product.stock == "No" || product.stock == "nO")
+                                {
+                                    <span class="badge bg-danger text-dark">NOUNITS</span>
+                                }
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer">
+                            <p class="card-text text-center">
+                                <a class="btn btn-success text-dark btn-sm"><i class="bi bi-cart-plus"></i> Add to Cart (Price @product.Price.ToString("c"))</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

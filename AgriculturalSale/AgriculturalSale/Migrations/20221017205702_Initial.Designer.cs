@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgriculturalSale.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220919162805_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20221017205702_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,15 +31,16 @@ namespace AgriculturalSale.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Municipality")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("MunicipalityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("SideWalk")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MunicipalityId");
 
                     b.ToTable("Location");
                 });
@@ -59,13 +60,28 @@ namespace AgriculturalSale.Migrations
                     b.ToTable("MethodOfPayment");
                 });
 
+            modelBuilder.Entity("AgriculturalSale.Models.Municipality", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Municipality");
+                });
+
             modelBuilder.Entity("AgriculturalSale.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Features")
+                    b.Property<string>("Details")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -86,6 +102,10 @@ namespace AgriculturalSale.Migrations
                     b.Property<int>("ProducTypeId")
                         .HasColumnType("int");
 
+                    b.Property<string>("stock")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LocationId");
@@ -101,7 +121,7 @@ namespace AgriculturalSale.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Features")
+                    b.Property<string>("Details")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -129,10 +149,6 @@ namespace AgriculturalSale.Migrations
 
                     b.Property<int>("MethodOfPaymentId")
                         .HasColumnType("int");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -358,6 +374,17 @@ namespace AgriculturalSale.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("AgriculturalSale.Models.Location", b =>
+                {
+                    b.HasOne("AgriculturalSale.Models.Municipality", "Municipality")
+                        .WithMany("locations")
+                        .HasForeignKey("MunicipalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Municipality");
+                });
+
             modelBuilder.Entity("AgriculturalSale.Models.Product", b =>
                 {
                     b.HasOne("AgriculturalSale.Models.Location", "Location")
@@ -466,6 +493,11 @@ namespace AgriculturalSale.Migrations
             modelBuilder.Entity("AgriculturalSale.Models.MethodOfPayment", b =>
                 {
                     b.Navigation("sales");
+                });
+
+            modelBuilder.Entity("AgriculturalSale.Models.Municipality", b =>
+                {
+                    b.Navigation("locations");
                 });
 
             modelBuilder.Entity("AgriculturalSale.Models.Product", b =>

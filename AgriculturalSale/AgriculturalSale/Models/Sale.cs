@@ -8,8 +8,6 @@ namespace AgriculturalSale.Models
         [Key]
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public string PhoneNumber { get; set; }
-
         //Relation Ships 
         public List<SaleDetail> SaleDetails { get; set; }
 
