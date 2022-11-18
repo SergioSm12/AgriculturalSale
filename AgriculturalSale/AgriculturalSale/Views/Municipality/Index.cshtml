@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Municipality>
+@{
+    ViewData["Title"] = "Municipality List";
+
+}
+
+<div class="row">
+    <table class=" col-md-8  table table-striped table-bordered">
+        <thead class="cardh">
+        <th>@Html.DisplayNameFor(m=> m.name)</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+            @foreach (var municipality in Model)
+            {
+                <tr>
+                    <td class="align-middle">@municipality.name</td>
+                    <td>
+                        <a class="btn btn-outline-primary" style="margin-bottom: 5px" asp-action="Edit" asp-route-id="@municipality.Id"><i class="bi bi-pen"></i></a>
+                        <br />
+                        <a class="btn btn-outline-info" style="margin-bottom: 5px" asp-action="Details" asp-route-id="@municipality.Id"><i class="bi bi-info-circle"></i></a>
+                        <br />
+                        <a class="btn btn-outline-danger" style="margin-bottom: 5px" asp-action="Delete" asp-route-id="@municipality.Id"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-white mb-4" style="position:fixed; right: 25px; bottom : 35px;">
+    <a asp-controller="Municipality" asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Add New
+    </a>
+
+</div>
+

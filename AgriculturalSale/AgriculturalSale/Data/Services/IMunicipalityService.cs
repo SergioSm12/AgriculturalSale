@@ -3,10 +3,8 @@ using AgriculturalSale.Models;
 
 namespace AgriculturalSale.Data.Services
 {
-    public interface IProductTypeService: IEntityBaseRepository<ProductType>
+    public interface IMunicipalityService:IEntityBaseRepository<Municipality>
     {
-       
-
 
     }
 }

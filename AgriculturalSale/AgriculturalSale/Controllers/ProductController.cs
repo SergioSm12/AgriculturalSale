@@ -1,4 +1,5 @@
 ﻿using AgriculturalSale.Data;
+using AgriculturalSale.Data.Services;
 using AgriculturalSale.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,16 +8,16 @@ namespace AgriculturalSale.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IProductService _service;
 
-        public ProductController(ApplicationDbContext contex)
+        public ProductController(IProductService service)
         {
-            this._context = contex;
+            this._service = service;
         }
 
         public async Task<IActionResult> Index()
         {
-            var data = await _context.Product.Include(pt => pt.ProductType).OrderBy(pt => pt.Name).ToListAsync();
+            var data = await _service.GetAllAsync(pt=> pt.ProductType, l=> l.Location);
             return View(data);
         }
     }

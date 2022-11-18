@@ -18,6 +18,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 //service confihuration
 builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
+builder.Services.AddScoped<IMunicipalityService, MunicipalityService>();
+builder.Services.AddScoped<ILocationService, LocationService>();
+builder.Services.AddScoped<IProductService, ProductService>();  
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

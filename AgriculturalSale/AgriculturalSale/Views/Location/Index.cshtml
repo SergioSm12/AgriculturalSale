@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Location>
+@{
+    ViewData["Title"] = "List of Locations";
+
+}
+
+<div class="row">
+    <table class=" col-md-8  table table-striped table-bordered">
+        <thead class="cardh">
+        <th>@Html.DisplayNameFor(m=> m.SideWalk)</th>
+        <th>@Html.DisplayNameFor(m=> m.Details)</th>
+        <th>@Html.DisplayNameFor(m=> m.MunicipalityId)</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+            @foreach (var location in Model)
+            {
+                <tr>
+
+                    <td class="align-middle">@location.SideWalk</td>
+                    <td class="align-middle">@location.Details</td>
+                    <td class="align-middle">@location.Municipality.name</td>
+                    <td>
+                        <a class="btn btn-outline-primary" style="margin-bottom: 5px" asp-action="Edit" asp-route-id="@location.Id"><i class="bi bi-pen"></i></a>
+                        <br />
+                        <a class="btn btn-outline-info" style="margin-bottom: 5px" asp-action="Details" asp-route-id="@location.Id"><i class="bi bi-info-circle"></i></a>
+                        <br />
+                        <a class="btn btn-outline-danger" style="margin-bottom: 5px" asp-action="Delete" asp-route-id="@location.Id"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-dark mb-4" style="position:fixed; right: 25px; bottom : 35px;">
+    <a asp-controller="Location" asp-action="Create" class="btn btn-success text-dark">
+        <i class="bi bi-plus-circle"></i> Add New
+    </a>
+
+</div>
+
